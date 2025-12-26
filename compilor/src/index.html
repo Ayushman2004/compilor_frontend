@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Text Editor</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Include Monaco Editor CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.29.1/min/vs/loader.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">Python Online Compiler</div>
+        <div id="editor" style="height:300px; border:1px solid #ccc;"></div>
+        <button onclick="sendCode()">Run Code</button>
+        <div id="output"></div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        require.config({ paths: { 'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.29.1/min/vs' }});
+        require(['vs/editor/editor.main'], function() {
+            window.editor = monaco.editor.create(document.getElementById('editor'), {
+                value: "# Write your code here...\n",
+                language: 'python',
+                theme: 'vs-light',
+                wordWrap: 'on',
+                automaticLayout: true,
+                minimap: { enabled: false },
+                lineNumbers: 'on',
+                wordWrap: 'on',
+                automaticLayout: true,
+                scrollBeyondLastLine: false,
+                fontFamily: 'monospace',
+                fontSize: 14,
+                lineHeight: 20,
+                contextmenu: false,
+                scrollbar: {
+                    vertical: 'hidden',
+                    horizontal: 'hidden'
+                }
+            });
+        });
+    </script>
+</body>
+</html>
